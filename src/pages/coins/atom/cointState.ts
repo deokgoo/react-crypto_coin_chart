@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-interface CoinInterface {
+export interface CoinInterface {
   id: string;
   name: string;
   symbol: string;
@@ -10,10 +10,10 @@ interface CoinInterface {
   type: string;
 }
 
-const coinListState = atom<{coins: CoinInterface[]}>({
+const coinListState = atom<CoinInterface[]>({
   key: 'coinList',
-  default: {
-    coins: [{
+  default: [
+    {
       id: "btc-bitcoin",
       name: "Bitcoin",
       symbol: "BTC",
@@ -39,8 +39,8 @@ const coinListState = atom<{coins: CoinInterface[]}>({
       is_new: false,
       is_active: true,
       type: "token",
-    },]
-  }
+    },
+  ]
 });
 
 export default coinListState;

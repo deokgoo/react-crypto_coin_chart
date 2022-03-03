@@ -1,11 +1,17 @@
-import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
+import Coins from './pages/coins';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      
-    </div>
+    <Router>
+      <div className="App">
+        <RecoilRoot>
+          <Coins></Coins>
+        </RecoilRoot>
+      </div>
+    </Router>
   );
 }
 

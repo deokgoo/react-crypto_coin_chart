@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { useQuery } from 'react-query';
+import coinListState, { CoinInterface } from './atom/cointState';
+import { getCoinList } from '../../services/bitcoinAPI';
 import styled from 'styled-components';
-import {} from 'recoil';
 
 const Container = styled.div``;
 
@@ -15,7 +18,11 @@ const Title = styled.h1`
 `;
 
 const Coins = () => {
-  
+  const coinsList = useRecoilValue(coinListState);
+  const { isLoading, error, data, isFetching} = useQuery<Promise<CoinInterface[]>>('repoData', () => {
+    
+    return getCoinList();
+  });
 
   return (
     <>
@@ -24,11 +31,11 @@ const Coins = () => {
           <Title>Coin</Title>
         </Header>
         <CoinList>
-          {/* {coins.map(x => (
+          {coinsList.map(x => (
             <Coin key={x.id}>
-              <Link to={`/${x.id}`}>{x.name} &rarr</Link>
+              <Link to={`/${x.id}`}>{x.name}</Link>
             </Coin>
-          ))} */}
+          ))}
         </CoinList>
       </Container>
     </>
