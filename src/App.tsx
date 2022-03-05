@@ -15,8 +15,8 @@ const App = () => {
           <Route path="/" element={<Coins />} />
           <Route path=":coinId" element={<CoinDetail />} />
         </Routes>
+        <ReactQueryDevtools initialIsOpen={true} />
       </QueryClientProvider>
-      <ReactQueryDevtools initialIsOpen={true} />
     </>
   );
 }

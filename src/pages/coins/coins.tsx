@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { CoinInterface, getCoinList } from '../../services/bitcoinAPI';
+import { CoinInterface, getCoinList } from '@/api/bitcoinAPI';
+import MainHeader from '@/components/main-header';
+import CoinItem from '@/components/coin-item';
 import * as style from './style';
 
 const Coins = () => {
-  const { Container, Header, Title, CoinList, Coin } = style;
+  const { Container, Header, CointListWrapper, CoinList } = style;
   const { isLoading, data: coinsList } = useQuery<CoinInterface[]>('coinList', getCoinList);
 
   const renderCoinList = () => {
@@ -13,12 +14,7 @@ const Coins = () => {
       {isLoading || !coinsList ?
         'update...':
         coinsList.map(x => (
-          <Coin key={x.id}>
-            <Link to={`/${x.id}`}>
-              <img src={`https://cryptoicon-api.vercel.app/api/icon/${x.symbol.toLowerCase()}`} alt={x.name} />
-              {x.name}
-            </Link>
-          </Coin>
+          <CoinItem key={x.id} coinItem={x} />
         ))
       }
       </>
@@ -28,11 +24,13 @@ const Coins = () => {
   return (
     <Container>
       <Header>
-        <Title>Coin</Title>
+        <MainHeader />
       </Header>
-      <CoinList>
-        {renderCoinList()}
-      </CoinList>
+      <CointListWrapper>
+        <CoinList>
+          {renderCoinList()}
+        </CoinList>
+      </CointListWrapper>
     </Container>
   );
 };

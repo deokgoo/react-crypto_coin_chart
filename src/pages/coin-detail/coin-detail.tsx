@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
-import { getCoinDetail, CoinDetailInterface, CoinPriceInterface, getCoinPrice } from '../../services/bitcoinAPI';
+import { getCoinDetail, CoinDetailInterface, CoinPriceInterface, getCoinPrice } from '@/api/bitcoinAPI';
 
 type RouteParams = 'coinId';
 
