@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-crypto_coin_chart/static/css/main.b95ed80a.css",
-    "main.js": "/react-crypto_coin_chart/static/js/main.04244741.js",
+    "main.js": "/react-crypto_coin_chart/static/js/main.f83e14c4.js",
     "static/js/787.9658868e.chunk.js": "/react-crypto_coin_chart/static/js/787.9658868e.chunk.js",
     "index.html": "/react-crypto_coin_chart/index.html",
     "main.b95ed80a.css.map": "/react-crypto_coin_chart/static/css/main.b95ed80a.css.map",
-    "main.04244741.js.map": "/react-crypto_coin_chart/static/js/main.04244741.js.map",
+    "main.f83e14c4.js.map": "/react-crypto_coin_chart/static/js/main.f83e14c4.js.map",
     "787.9658868e.chunk.js.map": "/react-crypto_coin_chart/static/js/787.9658868e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b95ed80a.css",
-    "static/js/main.04244741.js"
+    "static/js/main.f83e14c4.js"
   ]
 }
