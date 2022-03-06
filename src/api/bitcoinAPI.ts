@@ -81,6 +81,13 @@ export const getCoinDetail = async (coinId: string): Promise<CoinDetailInterface
   return fetchData.data;
 }
 
+export const getCoinPriceList = async (): Promise<CoinPriceInterface[]> => {
+  const url = `${BASE_URL}/tickers`;
+  const fetchData = await axios.get(url);
+
+  return fetchData.data;
+}
+
 export const getCoinPrice = async (coinId: string): Promise<CoinPriceInterface> => {
   const url = `${BASE_URL}/tickers/${coinId}`;
   const fetchData = await axios.get(url);

@@ -15,3 +15,8 @@ export const CoinList = styled.ul`
   background-color: #323138;
   border-radius: 20px;
 `;
+
+export const LiveBoard = styled.div`
+  padding-left: 24px;
+  margin-bottom: 12px;
+`;

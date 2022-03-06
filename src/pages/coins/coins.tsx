@@ -1,19 +1,22 @@
 import { useQuery } from 'react-query';
-import { CoinInterface, getCoinList } from '@/api/bitcoinAPI';
+import { CoinPriceInterface, getCoinPriceList } from '@/api/bitcoinAPI';
 import MainHeader from '@/components/main-header';
 import CoinItem from '@/components/coin-item';
 import * as style from './style';
 
 const Coins = () => {
-  const { Container, Header, CointListWrapper, CoinList } = style;
-  const { isLoading, data: coinsList } = useQuery<CoinInterface[]>('coinList', getCoinList);
+  const { Container, Header, CointListWrapper, CoinList, LiveBoard } = style;
+  const { isLoading, data: coinPriceList } = useQuery<CoinPriceInterface[]>('coinPriceList', getCoinPriceList, {refetchInterval: 1000});
 
   const renderCoinList = () => {
+    if(!coinPriceList) return;
+
+    const coinsTop10 = coinPriceList.slice(0, 10);
     return (
       <>
-      {isLoading || !coinsList ?
+      {isLoading ?
         'update...':
-        coinsList.map(x => (
+        coinsTop10.map(x => (
           <CoinItem key={x.id} coinItem={x} />
         ))
       }
@@ -27,6 +30,11 @@ const Coins = () => {
         <MainHeader />
       </Header>
       <CointListWrapper>
+        {
+          coinPriceList ? 
+          <LiveBoard>🔴 UpdatedAt {coinPriceList[0].last_updated}</LiveBoard> :
+          ''
+        }
         <CoinList>
           {renderCoinList()}
         </CoinList>
