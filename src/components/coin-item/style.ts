@@ -1,8 +1,18 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const boxFade = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
 
 export const Item = styled.li`
   padding: 12px;
   border-bottom: 1px solid #514F5A;
+  animation: ${boxFade} 1s 1s linear;
 
   &:last-child {
     border-bottom: none;

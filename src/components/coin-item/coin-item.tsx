@@ -19,7 +19,7 @@ const CoinItem = ({ coinItem }: {coinItem: CoinPriceInterface}) => {
           <div className="coin__img-wrapper">
             <img src={`https://cryptoicon-api.vercel.app/api/icon/${coinItem.symbol.toLowerCase()}`} alt={coinItem.name} />
           </div>
-          <div className="coin__name">${coinItem.name.toUpperCase()}</div>
+          <div className="coin__name">{coinItem.name.toUpperCase()}</div>
         </div>
         <div className="coin__description">
           <div className="coin__description__wrapper">

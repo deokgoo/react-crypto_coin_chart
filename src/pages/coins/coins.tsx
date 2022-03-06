@@ -6,7 +6,7 @@ import * as style from './style';
 
 const Coins = () => {
   const { Container, Header, CointListWrapper, CoinList, LiveBoard } = style;
-  const { isLoading, data: coinPriceList } = useQuery<CoinPriceInterface[]>('coinPriceList', getCoinPriceList, {refetchInterval: 1000});
+  const { isLoading, data: coinPriceList } = useQuery<CoinPriceInterface[]>('coinPriceList', getCoinPriceList);
 
   const renderCoinList = () => {
     if(!coinPriceList) return;
