@@ -8,6 +8,19 @@ const Coins = () => {
   const { Container, Header, CointListWrapper, CoinList, LiveBoard } = style;
   const { isLoading, data: coinPriceList } = useQuery<CoinPriceInterface[]>('coinPriceList', getCoinPriceList);
 
+  const updateDate = () => {
+    if(!coinPriceList) return;
+
+    const updatedDate = new Date(coinPriceList[0].last_updated);
+    const year = updatedDate.getFullYear().toString();
+    const month = updatedDate.getMonth().toString();
+    const date = updatedDate.getDate().toString();
+    const hour = updatedDate.getHours().toString();
+    const minute = updatedDate.getMinutes().toString();
+    const second = updatedDate.getSeconds().toString();
+    return `${year}. ${month.padStart(2, '0')}. ${date.padStart(2, '0')} ${hour.padStart(2, '0')}:${minute.padStart(2, '0')}:${second.padStart(2, '0')}`;
+  }
+
   const renderCoinList = () => {
     if(!coinPriceList) return;
 
@@ -32,7 +45,7 @@ const Coins = () => {
       <CointListWrapper>
         {
           coinPriceList ? 
-          <LiveBoard>🔴 UpdatedAt {coinPriceList[0].last_updated}</LiveBoard> :
+          <LiveBoard>🔴 UpdatedAt {updateDate()}</LiveBoard> :
           ''
         }
         <CoinList>
